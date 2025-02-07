@@ -2,7 +2,10 @@ import { Router } from "express";
 import path from "path";
 import { fileURLToPath } from 'url';
 
+import { flightController } from "../controllers/vuelo.controller.js";
+
 const router = Router();
+
 
 //ocultar la extension del archivo
 
@@ -50,5 +53,11 @@ router.get('/pasajero', (req, res) => {
 router.get('/ticket', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/ticket.html'));
 });
+router.get('/agendamiento', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/agendamiento.html'));
+});
+
+router.post('/send-email', flightController.sendEmail);
+
 
 export default router;

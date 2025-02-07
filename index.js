@@ -9,14 +9,20 @@ import servicioRouter from './routes/servicio.route.js';
 import pasajeroRouter from './routes/pasajero.route.js';
 import ticketRouter from './routes/ticket.route.js';
 
-
 import path from 'path';
 import { fileURLToPath } from 'url';
+
+import bodyParser from 'body-parser';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 
 /* app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -41,7 +47,6 @@ app.use('/api/v1/servicio', servicioRouter);// vista servico
 app.use('/api/v1/pasajero', pasajeroRouter);// vista pasajero
 app.use('/api/v1/ticket', ticketRouter);// vista ticket
 app.use('/api/v1/user', userRouter);// vista usuario
-
 
 
 //RUTAS

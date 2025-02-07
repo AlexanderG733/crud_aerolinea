@@ -13,7 +13,6 @@
     <link rel="shortcut icon" href="img/inicio.png" type="image/x-icon">
     <title>aerolinea</title>
 </head>
-
 <body>
     <div class="container mt-2">
         <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-center">
@@ -24,16 +23,17 @@
                 </a>
                 </li>
                 <li class="nav-item pt-2">
-                    <a class="nav-link" aria-current="page" href="#">Aviones</a>
+                    <a class="nav-link" aria-current="page" href="/avion">Aviones</a>
+                </li>
+
+                <li class="nav-item pt-2">
+                    <a class="nav-link" aria-current="page" href="/tripulante">Tripulantes</a>
                 </li>
                 <li class="nav-item pt-2">
-                    <a class="nav-link" aria-current="page" href="../tripulante">Tripulantes</a>
+                    <a class="nav-link" aria-current="page" href="/clase">Clases</a>
                 </li>
                 <li class="nav-item pt-2">
-                    <a class="nav-link" aria-current="page" href="../clase">Clases</a>
-                </li>
-                <li class="nav-item pt-2">
-                    <a class="nav-link" aria-current="page" href="../servicio">Servicios</a>
+                    <a class="nav-link" aria-current="page" href="/servicio">Servicios</a>
                 </li>
                 <li class="nav-item pt-2">
                     <a class="nav-link" aria-current="page" href="/pasajero">Pasajeros</a>
@@ -48,44 +48,48 @@
         </nav>
     </div>
     <div class="container mt-4">
-        <h1 class="blockquote">Gestion de aviones</h1>
+        <h1 class="blockquote">Agendamiento</h1>
         <!-- Formulario para pedir los datos -->
-        <form class="container mt-4" id="formAvion">
+        <form class="container mt-4" action="/send-email" method="POST" id="formAgendar" >
             <div class="row">
                 <div class="col-12 col-md-4 mb-1">
                     <div class="form-group">
-                        <label for="id">ID</label>
-                        <input type="number" class="form-control w-100" name="id"
-                        min="1" max="99999999" title="Por favor ingrese un ID válido entre 1 y 99,999,999" id="id">
+                        <label for="email">Correo electrónico</label>
+                            <input type="email" class="form-control w-100" id="email" name="email" required>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-1">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control w-100" id="nombre" name="nombre" required>
+                        <label for="origen">Origen</label>
+                            <input type="text" class="form-control w-100" id="origen" name="origen" required>
                     </div>
                 </div>
-            </div>
+                <div class="col-12 col-md-4 mb-1">
+                    <div class="form-group">
+                        <label for="destino">Destino</label>
+                            <input type="text" class="form-control w-100" id="destino" name="destino" required>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-1">
+                    <div class="form-group">
+                        <label for="ida">Ida</label>
+                            <input type="date" class="form-control w-100" id="ida" name="ida" required>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-1">
+                    <div class="form-group">
+                        <label for="vuelta">Vuelta</label>
+                            <input type="date" class="form-control w-100" id="vuelta" name="vuelta" required>
+                    </div>
+                </div>
+            </div>    
             <div class="btn-group mt-3">
                 <button type="submit" class="btn btn-primary mx-2 rounded w-100">Enviar</button>
-                <button type="reset" class="btn btn-outline-primary mx-2 rounded w-100">Borrar</button>
-                <input class="form-control mx-2 rounded" type="search" id="searchInput" placeholder="Nombre1" aria-label="Search">
-                <button class="btn btn-outline-success rounded" type="button" onclick="searchAvion()">Buscar</button>
-            </div>           
+            </div>          
         </form>
-      <table class="table table-bordered table-striped table-hover mt-4">
-            <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nombre</th>
-                    </tr>
-                </thead>
-            <tbody id="avionesTbBd">
-            </tbody>
-        </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../aviones.js"></script>
+    <script src="../agendamiento.js"></script>
 </body>
 </html>
